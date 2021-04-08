@@ -1,1 +1,0 @@
-document.write('this is b.js')
