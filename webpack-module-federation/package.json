@@ -1,0 +1,23 @@
+{
+  "name": "webpack-module-federation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "app1",
+      "app2"
+    ]
+  },
+  "scripts": {
+    "dev": "lerna run --parallel dev",
+    "build": "lerna run build",
+    "serve": "lerna run --parallel serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
