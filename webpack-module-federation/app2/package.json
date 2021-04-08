@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-cli serve",
     "build": "rimraf dist && webpack",
-    "serve": "hs ./dist"
+    "serve": "hs ./dist -p 3002"
   },
   "author": "",
   "license": "ISC",

@@ -14,6 +14,7 @@ module.exports = function () {
       path: resolve("dist"),
       filename: "[name].js",
     },
+    stats: 'minimal',
     devServer: {
       contentBase: path.join(__dirname, "dist"),
       port: 3002,
@@ -26,6 +27,7 @@ module.exports = function () {
         },
       ],
     },
+    devtool: 'eval-source-map',
     plugins: [
       new ModuleFederationPlugin({
         name: "app2",

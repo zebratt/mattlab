@@ -14,6 +14,7 @@ module.exports = function () {
       path: resolve("dist"),
       filename: "[name].js",
     },
+    stats: 'minimal',
     devServer: {
       contentBase: path.join(__dirname, "dist"),
       port: 3001,
@@ -21,6 +22,7 @@ module.exports = function () {
     resolve: {
       extensions: [".js", ".jsx", ".ts", ".tsx"],
     },
+    devtool: 'eval-source-map',
     module: {
       rules: [
         {
