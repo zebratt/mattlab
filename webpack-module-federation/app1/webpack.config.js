@@ -24,13 +24,6 @@ module.exports = function () {
     module: {
       rules: [
         {
-          test: /bootstrap\.jsx/,
-          loader: "bundle-loader",
-          options: {
-            lazy: true,
-          },
-        },
-        {
           test: /\.jsx?$/,
           use: ["babel-loader"],
         },
