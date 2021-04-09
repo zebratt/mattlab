@@ -24,6 +24,15 @@ module.exports = function () {
       port: 3000,
     },
     optimization: {
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          lodash: {
+            test: /node_modules/,
+            chunks: 'all'
+          }
+        }
+      },
       runtimeChunk: {
         name: 'runtime',
       },

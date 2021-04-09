@@ -1,3 +1,5 @@
+dependencies:
+  lodash: 4.17.21
 devDependencies:
   html-webpack-plugin: 5.3.1_webpack@5.31.0
   webpack: 5.31.0_webpack-cli@4.6.0
@@ -1925,7 +1927,6 @@ packages:
     resolution:
       integrity: sha1-Gvujlq/WdqbUJQTQpno6frn2KqA=
   /lodash/4.17.21:
-    dev: true
     resolution:
       integrity: sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
   /loglevel/1.7.1:
@@ -3555,6 +3556,7 @@ packages:
       integrity: sha1-ApTrPe4FAo0x7hpfosVWpqrxChs=
 specifiers:
   html-webpack-plugin: ^5.3.1
+  lodash: ^4.17.21
   webpack: ^5.31.0
   webpack-cli: ^4.6.0
   webpack-dev-server: ^3.11.2
