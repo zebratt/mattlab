@@ -25,16 +25,16 @@ module.exports = function () {
     },
     optimization: {
       splitChunks: {
-        chunks: 'all',
         cacheGroups: {
           lodash: {
-            test: /node_modules/,
-            chunks: 'all'
-          }
-        }
+            test: /[\\/]node_modules[\\/]lodash/,
+            enforce: true, // ignore size limitations
+            chunks: "all", // this chunk can be shared between any sync or async modules
+          },
+        },
       },
       runtimeChunk: {
-        name: 'runtime',
+        name: "runtime",
       },
     },
   };
