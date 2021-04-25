@@ -62,6 +62,7 @@
     "array-move": "^3.0.1",
     "gsap": "^3.6.0",
     "history": "^5.0.0",
+    "intersection-observer": "^0.12.0",
     "normalize.css": "^8.0.1",
     "oasis-engine": "^0.2.1",
     "react": "^17.0.1",
