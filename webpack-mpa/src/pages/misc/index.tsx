@@ -2,19 +2,20 @@
 import { bootstrap } from '@/bootstrap';
 import React, { useEffect } from 'react';
 
-const MiscPage: React.FC = () => {
+function MiscPage() {
   return (
     <div>
       <h1>misc page</h1>
       <button
-        onClick={() => {
-          console.log('asdf');
+        onClick={async () => {
+          const { default: Page2 } = await import('./slave');
+          bootstrap(<Page2 />);
         }}
       >
         click me
       </button>
     </div>
   );
-};
+}
 
 bootstrap(<MiscPage />);
