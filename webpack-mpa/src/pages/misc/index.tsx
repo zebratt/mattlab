@@ -1,19 +1,24 @@
 //@ts-nocheck
 import { bootstrap } from '@/bootstrap';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 
-function useExpand(num){
-  const atom = useMemo(() => {
-    console.log('use memo execute...')
-    return num * num
-  }, [num])
+function useExpand(obj) {
+  const atom = useRef(obj.num * obj.num)
 
-  return atom
+  const abc = useCallback(() => {
+    console.log('use callback execute')
+  }, [atom])
+
+  const bbc = useMemo(() => {
+    console.log('use memo execute')
+  }, [abc])
+
+  return atom.current;
 }
 
 function MiscPage() {
   const [count, setCount] = useState(0);
-  const number = useExpand(count)
+  const number = useExpand({num: 10});
 
   return (
     <div>
