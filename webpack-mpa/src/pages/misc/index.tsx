@@ -1,18 +1,30 @@
 //@ts-nocheck
 import { bootstrap } from '@/bootstrap';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+
+function useExpand(num){
+  const atom = useMemo(() => {
+    console.log('use memo execute...')
+    return num * num
+  }, [num])
+
+  return atom
+}
 
 function MiscPage() {
+  const [count, setCount] = useState(0);
+  const number = useExpand(count)
+
   return (
     <div>
-      <h1>misc page</h1>
+      <p>count: {count}</p>
+      <p>number: {number}</p>
       <button
         onClick={async () => {
-          const { default: Page2 } = await import('./slave');
-          bootstrap(<Page2 />);
+          setCount(() => count + 1);
         }}
       >
-        click me
+        increase
       </button>
     </div>
   );
