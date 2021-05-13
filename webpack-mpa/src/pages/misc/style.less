@@ -1,17 +1,15 @@
-.box {
-  display: flex;
+.misc-page {
+  overflow: hidden;
 
-  .item {
-    flex: 1;
-
-    &:nth-child(1) {
-      background-color: red;
-    }
-    &:nth-child(2) {
-      background-color: blue;
-    }
-    &:nth-child(3) {
-      background-color: green;
+  .slides-wrapper {
+    width: 1656px;
+    display: flex;
+    transition: transform 0.5s;
+    
+    .slide-item {
+      display: block;
+      width: 100vw;
+      height: 400px;
     }
   }
 }
