@@ -7,9 +7,7 @@ import React, {
   useRef,
   useCallback,
 } from 'react';
-import 'intersection-observer';
-import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
+import 'intersection-observer'
 
 import './style.less';
 
@@ -23,8 +21,12 @@ const images = [
 function MiscPage() {
   const [offset, setOffset] = useState(0);
 
+  function move() {
+    setOffset((offset + 1) % 4);
+  }
+
   useEffect(() => {
-    const targets = Array.from(document.querySelectorAll('.swiper-slide'));
+    const targets = Array.from(document.querySelectorAll('.slide-item'));
     const observer = new IntersectionObserver(
       (entries) => {
         const map = entries.map((ele) => ({
@@ -32,7 +34,7 @@ function MiscPage() {
           visible: ele.isIntersecting,
         }));
 
-        console.log(map);
+        console.log(map)
       },
       { threshold: 1 }
     );
@@ -42,26 +44,22 @@ function MiscPage() {
     }
   }, []);
 
-  useEffect(() => {
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
-    });
-  }, []);
-
   return (
     <div className="misc-page">
-      <h1>misc</h1>
-      <div className="swiper-container">
-        <div className="swiper-wrapper">
-          {images.map((ele, idx) => (
-            <img
-              data-id={`image-${idx + 1}`}
-              className="swiper-slide"
-              key={idx}
-              src={ele}
-            />
-          ))}
-        </div>
+      <h1>carousel</h1>
+      <button onClick={move}>move</button>
+      <div
+        className="slides-wrapper"
+        style={{ transform: `translate3d(-${offset * 414}px, 0, 0)` }}
+      >
+        {images.map((ele, idx) => (
+          <img
+            data-id={`image-${idx + 1}`}
+            className="slide-item"
+            key={idx}
+            src={ele}
+          />
+        ))}
       </div>
     </div>
   );
