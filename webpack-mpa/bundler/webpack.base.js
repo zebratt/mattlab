@@ -38,7 +38,7 @@ module.exports = function () {
         {
           test: /\.(js|jsx|ts|tsx)$/,
           include: [resolve('src')],
-          use: ['babel-loader', path.resolve(__dirname, './hmr-loader.js')],
+          use: ['babel-loader'],
         },
         {
           test: /\.css$/,
