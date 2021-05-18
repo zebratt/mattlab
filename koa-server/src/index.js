@@ -19,8 +19,8 @@ app.use(async (ctx, next) => {
 })
 
 // router entry
-// app.use(rootRouter.routes())
-// app.use(rootRouter.allowedMethods())
+app.use(rootRouter.routes())
+app.use(rootRouter.allowedMethods())
 
 // final router
 app.use(async ctx => {
