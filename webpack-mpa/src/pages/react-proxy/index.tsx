@@ -13,7 +13,7 @@ function MiscPage() {
   return (
     <div>
       {/* {toggle ? <Sub /> : <Sub2 />} */}
-      <Foo />
+      <ProxyFoo />
       <button onClick={() => setToggle(!toggle)}>toggle</button>
       <button
         onClick={() => {
@@ -30,9 +30,3 @@ function MiscPage() {
 }
 
 bootstrap(React.createElement(MiscPage, null, null));
-
-if (module.hot) {
-  module.hot.accept('./foo', function () {
-    console.log('accept')
-  });
-}

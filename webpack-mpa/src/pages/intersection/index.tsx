@@ -98,6 +98,7 @@ function IntersectionPage() {
 
   return (
     <div className="intersection-page">
+      <div className="blank"></div>
       <div data-clip-id="clip1" className="block a"></div>
       <div data-clip-id="clip2" className="block b"></div>
       <div data-clip-id="clip3" className="block c"></div>
