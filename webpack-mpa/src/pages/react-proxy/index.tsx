@@ -18,9 +18,13 @@ function MiscPage() {
       <button
         onClick={() => {
           const mounted = proxy.update(Foo2);
-          const forceUpdate = getForceUpdate(React);
 
-          mounted.forEach(forceUpdate);
+          // const forceUpdate = getForceUpdate(React);
+          // mounted.forEach(forceUpdate);
+
+          for(const i of mounted){
+            i.forceUpdate()
+          }
         }}
       >
         update Foo
