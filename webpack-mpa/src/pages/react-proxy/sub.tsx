@@ -6,7 +6,7 @@ export function Sub() {
   return (
     <div>
       <h3>sub page</h3>
-      <div>count: {count}</div>
+      <div>3count: {count}</div>
       <button onClick={() => setCount(count + 1)}>add 1</button>
     </div>
   );
@@ -22,9 +22,4 @@ export function Sub2() {
       <button onClick={() => setCount(count + 1)}>add 1</button>
     </div>
   );
-}
-
-if (module.hot) {
-  console.log(5);
-  module.hot.accept();
 }
