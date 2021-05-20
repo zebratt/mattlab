@@ -1,10 +1,14 @@
 import { bootstrap } from '@/bootstrap';
-import React from 'react';
+import React, { useState } from 'react';
+import Foo from './foo';
 
-class MiscPage extends React.Component {
-  render() {
-    return <div>this is misc page</div>;
-  }
+function MiscPage() {
+  return (
+    <div>
+      <h1>misc page</h1>
+      <Foo />
+    </div>
+  );
 }
 
 bootstrap(<MiscPage />);
