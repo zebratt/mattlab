@@ -1,5 +1,5 @@
 import { bootstrap } from '@/bootstrap';
-import React, { useState } from 'react';
+import React from 'react';
 import Foo from './foo';
 
 function MiscPage() {
