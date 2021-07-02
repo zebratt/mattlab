@@ -7,17 +7,14 @@ interface PageProps {
 }
 
 function HomePage(props: PageProps) {
-  const { structures } = props;
-
-  console.log(structures);
-
+  console.log(props)
   return <div className="page-home">home page</div>;
 }
 
 export async function fetch(): Promise<PageProps> {
   return {
-    structures: []
-  }
+    structures: [],
+  };
 }
 
 export default HomePage;
