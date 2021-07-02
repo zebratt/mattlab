@@ -3,3 +3,4 @@
 - vite
 - react
 - react-router
+- typescript
