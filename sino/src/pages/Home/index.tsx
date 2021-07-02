@@ -1,7 +1,5 @@
 import React from 'react';
 
-// mock
-import { structureData } from '@/data/mock';
 import type { StructureItem } from './interface';
 
 interface PageProps {
@@ -17,9 +15,9 @@ function HomePage(props: PageProps) {
 }
 
 export async function fetch(): Promise<PageProps> {
-  return Promise.resolve({
-    structures: structureData,
-  });
+  return {
+    structures: []
+  }
 }
 
 export default HomePage;
