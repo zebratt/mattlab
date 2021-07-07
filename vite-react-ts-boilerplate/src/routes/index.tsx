@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useRoutes } from 'react-router';
 
-import Home, { fetch as homeFetch } from '@/pages/Home';
+import Home, { fetch as HomeFetch } from '@/pages/Home';
 import PageNotFound from '@/pages/404';
 import PageLoading from '@/components/page-loading';
 import PageError from '@/components/page-error';
+import { useSelector } from 'react-redux';
+import type { RootState } from '@/store';
 
 interface PageLoaderProps<T> {
   Component: (props: T) => JSX.Element;
-  fetch: () => Promise<T>;
+  fetch?: () => Promise<T>;
 }
 enum PageStatus {
   success,
@@ -16,12 +18,16 @@ enum PageStatus {
   loading,
 }
 
+const voidPromise = () => Promise.resolve();
+
 function PageLoader({ Component, fetch }: PageLoaderProps<any>) {
   const [props, setProps] = useState(null);
   const [status, setStatus] = useState<PageStatus>(PageStatus.loading);
+  const { isLoading } = useSelector((state: RootState) => state.loading);
+  const fetchFunc = fetch ?? voidPromise;
 
   useEffect(() => {
-    fetch()
+    fetchFunc()
       .then((data) => {
         setProps(data);
         setStatus(PageStatus.success);
@@ -30,6 +36,8 @@ function PageLoader({ Component, fetch }: PageLoaderProps<any>) {
         setStatus(PageStatus.error);
       });
   }, []);
+
+  if (isLoading) return <PageLoading />;
 
   switch (status) {
     case PageStatus.success:
@@ -48,7 +56,7 @@ interface RouteConfigItem<T> {
 }
 
 export const routeConfig: RouteConfigItem<any>[] = [
-  { path: '/', Component: Home, fetch: homeFetch },
+  { path: '/', Component: Home, fetch: HomeFetch },
   {
     // 404
     path: '*',

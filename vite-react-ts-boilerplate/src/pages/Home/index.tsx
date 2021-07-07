@@ -1,20 +1,12 @@
+import { store } from '@/store';
 import React from 'react';
 
-import type { StructureItem } from './interface';
-
-interface PageProps {
-  structures: StructureItem[];
-}
-
-function HomePage(props: PageProps) {
-  console.log(props)
+function HomePage() {
   return <div className="page-home">home page</div>;
 }
 
-export async function fetch(): Promise<PageProps> {
-  return {
-    structures: [],
-  };
+export async function fetch() {
+  store.dispatch.core.init();
 }
 
 export default HomePage;
