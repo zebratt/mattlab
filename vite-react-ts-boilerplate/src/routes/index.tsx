@@ -37,11 +37,11 @@ function PageLoader({ Component, fetch }: PageLoaderProps<any>) {
       });
   }, []);
 
-  if (isLoading) return <PageLoading />;
-
   switch (status) {
     case PageStatus.success:
-      return <Component {...props!} />;
+      <PageLoading loading={isLoading}>
+        <Component {...props!} />;
+      </PageLoading>;
     case PageStatus.error:
       return <PageError />;
     default:
