@@ -10,8 +10,8 @@ export enum WritingMode {
 }
 
 const api = new Gitlab({
-  token: 'DYNC1YsPyvAcpV_3cLV2',
-  host: 'https://git.llsapp.com',
+  token: '',
+  host: '',
 });
 const PROJECT_ID = '9228';
 
