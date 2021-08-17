@@ -23,7 +23,7 @@ function HomePage() {
   const [addFilename, setAddFilename] = useState('');
   const [selectedKeys, setSelectKeys] = useState<Key[]>([]);
 
-  function onSelect(keys: Key[]) {
+  async function onSelect(keys: Key[]) {
     const filePath = keys?.[0];
 
     if (filePath) {
@@ -35,19 +35,18 @@ function HomePage() {
 
         setCurrentPath(filePath as string);
         setSelectKeys([filePath]);
-        getFile(filePath as string, branch).then((content) => {
-          if (editor && codeEditor) {
-            editor.set(content?.mocks ?? 'file not found!');
-            const transaction = codeEditor.state.update({
-              changes: {
-                from: 0,
-                to: codeEditor.state.doc.length,
-                insert: content?.middleware ?? '',
-              },
-            });
-            codeEditor.dispatch(transaction);
-          }
-        });
+        const content = await getFile(filePath as string, branch);
+        if (editor && codeEditor) {
+          editor.set(content?.mocks ?? 'file not found!');
+          const transaction = codeEditor.state.update({
+            changes: {
+              from: 0,
+              to: codeEditor.state.doc.length,
+              insert: content?.middleware ?? '',
+            },
+          });
+          codeEditor.dispatch(transaction);
+        }
       } catch (error) {
         message.error('文件读取失败');
       } finally {
