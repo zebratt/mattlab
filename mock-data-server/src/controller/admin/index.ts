@@ -30,7 +30,7 @@ export default class {
 
     try {
       const { content } = ctx.request.body as Record<string, any>;
-      const tree = await readDir('json');
+      const tree = await readDir('json', branch);
       const existFilenames = tree.map((ele) => ele.name);
       let mode = WritingMode.UPDATE;
 

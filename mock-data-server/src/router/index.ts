@@ -33,7 +33,7 @@ router.all('(.*)', async (ctx, next) => {
         await middlewareFun(mocks, ctx, next, require);
       }
     } catch (error) {
-      ctx.body = 'middleware exec error'
+      ctx.body = error.toString()
     }
   }
 });

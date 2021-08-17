@@ -20,52 +20,68 @@
     }
   }
 
-  .type-editor-panel {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
+  .editor-panel {
+    flex: 3;
 
-    &-body {
-      flex: 1;
-    }
-
-    &-actions {
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 0 24px;
+    &-head {
+      height: 40px;
       border-left: #3883fa solid 1px;
-      border-right: #3883fa solid 1px;
-    }
-  }
-
-  .action-editor-panel {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 60px);
-    overflow: hidden;
-
-    &-header {
-      height: 36px;
-      line-height: 36px;
+      line-height: 40px;
       padding-left: 12px;
-      color: #fff;
-      background: #3883fa;
     }
 
     &-body {
-      flex: 1;
-    }
-
-    &-actions {
-      height: 46px;
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 0 24px;
-      border-top: #3883fa solid 1px;
+
+      .type-editor-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        &-body {
+          flex: 1;
+        }
+
+        &-actions {
+          height: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 0 24px;
+          border-left: #3883fa solid 1px;
+          border-right: #3883fa solid 1px;
+        }
+      }
+
+      .action-editor-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 100px);
+        width: 400px;
+        overflow: scroll;
+
+        &-header {
+          height: 36px;
+          line-height: 36px;
+          padding-left: 12px;
+          color: #fff;
+          background: #3883fa;
+        }
+
+        &-body {
+          flex: 1;
+        }
+
+        &-actions {
+          height: 46px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 0 24px;
+          border-top: #3883fa solid 1px;
+        }
+      }
     }
   }
 }

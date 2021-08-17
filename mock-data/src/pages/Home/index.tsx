@@ -153,6 +153,17 @@ function HomePage() {
     }
   }
 
+  function generateResourcePath() {
+    if (currentPath) {
+      const resourcePath = currentPath.split('-').join('/');
+      const br = branch === 'master' ? '' : `?_br=${branch}`;
+
+      return `${import.meta.env.VITE_API_HOST}/${resourcePath}${br}`;
+    } else {
+      return '';
+    }
+  }
+
   return (
     <div className="page-home">
       <div className="tree-panel">
@@ -176,25 +187,33 @@ function HomePage() {
           />
         </div>
       </div>
-      <div className="type-editor-panel">
-        <div className="type-editor-panel-body">
-          <JSONEditor ref={editorRef} />
+      <div className="editor-panel">
+        <div className="editor-panel-head">
+          <span>资源路径：</span>
+          {generateResourcePath()}
         </div>
-        <div className="type-editor-panel-actions">
-          <Button type="primary" onClick={onSubmit}>
-            提交
-          </Button>
-        </div>
-      </div>
-      <div className="action-editor-panel">
-        <div className="action-editor-panel-header">Middleware</div>
-        <div className="action-editor-panel-body">
-          <CodeEditor ref={codeEditorRef} />
-        </div>
-        <div className="action-editor-panel-actions">
-          <Button type="primary" onClick={onSubmit}>
-            提交
-          </Button>
+        <div className="editor-panel-body">
+          <div className="type-editor-panel">
+            <div className="type-editor-panel-body">
+              <JSONEditor ref={editorRef} />
+            </div>
+            <div className="type-editor-panel-actions">
+              <Button type="primary" onClick={onSubmit}>
+                提交
+              </Button>
+            </div>
+          </div>
+          <div className="action-editor-panel">
+            <div className="action-editor-panel-header">Middleware</div>
+            <div className="action-editor-panel-body">
+              <CodeEditor ref={codeEditorRef} />
+            </div>
+            <div className="action-editor-panel-actions">
+              <Button type="primary" onClick={onSubmit}>
+                提交
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
       <Modal
@@ -210,7 +229,7 @@ function HomePage() {
         <Input onChange={(ele) => setAddFilename(ele.target.value)} />
       </Modal>
     </div>
-  );
+  )
 }
 
 export async function fetch() {
