@@ -1,0 +1,61 @@
+{
+  "name": "sino",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "xuejian.xu",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build:prod": "vite build --mode production",
+    "prepare": "husky install",
+    "lint": "lint-staged"
+  },
+  "dependencies": {
+    "@rematch/core": "^2.1.0",
+    "@rematch/immer": "^2.1.0",
+    "antd": "^4.16.13",
+    "history": "^5.0.0",
+    "immer": "^9.0.5",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router": "6.0.0-beta.0",
+    "react-router-dom": "6.0.0-beta.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,less,scss}": [
+      "stylelint --fix"
+    ]
+  },
+  "browserslist": [
+    "last 5 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@types/node": "^15.12.5",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/parser": "^4.31.1",
+    "@vitejs/plugin-react-refresh": "^1.3.4",
+    "eslint": "^7.32.0",
+    "exec-sh": "^0.4.0",
+    "husky": "^7.0.2",
+    "less": "^4.1.1",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3",
+    "vite": "^2.3.8",
+    "vite-plugin-style-import": "^1.0.1"
+  }
+}
