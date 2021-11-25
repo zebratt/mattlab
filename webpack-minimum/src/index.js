@@ -1,4 +1,5 @@
-import './apple'
-import add from 'lodash/add'
+const a = 10;
 
-console.log(add(1,2))
+if (a > 10) {
+  const a = require("./banana");
+}

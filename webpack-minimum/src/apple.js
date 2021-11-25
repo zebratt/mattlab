@@ -1,1 +1,1 @@
-document.getElementById('root').innerText = 'apple'
+export default "apple";
