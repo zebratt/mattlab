@@ -1,0 +1,12 @@
+{
+  "name": "minimum",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --force"
+  },
+  "devDependencies": {
+    "vite": "^2.6.14"
+  }
+}
