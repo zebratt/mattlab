@@ -22,6 +22,8 @@ module.exports = function () {
     devServer: {
       contentBase: resolve("dist"),
       port: 3000,
+      host: "0.0.0.0",
+      disableHostCheck: true,
     },
     optimization: {
       splitChunks: {

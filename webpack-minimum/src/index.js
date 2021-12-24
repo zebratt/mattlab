@@ -1,5 +1,3 @@
-import { add } from "ab-module";
+const ua = navigator.userAgent.toLocaleLowerCase();
 
-const res = add(1, 2);
-
-console.log(res);
+document.documentElement.innerHTML = `<h1>${ua}</h1>`;
