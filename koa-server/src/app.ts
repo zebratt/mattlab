@@ -46,7 +46,6 @@ async function start() {
       console.log(`server is running on port: ${port}`);
     });
   } catch (error) {
-    console.log(error)
     console.log("server start error!");
   }
 }
