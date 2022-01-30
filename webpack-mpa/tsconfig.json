@@ -9,6 +9,7 @@
     "noUnusedLocals": true,
     "strict": true,
     "noImplicitReturns": true,
+    "noImplicitAny": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,

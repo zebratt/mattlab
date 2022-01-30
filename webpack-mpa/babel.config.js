@@ -1,37 +1,25 @@
 module.exports = (api) => {
   api.cache(false);
 
-  const prodPlugins =
-    process.env.NODE_ENV === 'production'
-      ? ['@babel/plugin-transform-react-constant-elements']
-      : [];
-
   return {
     presets: [
+      '@babel/preset-react',
       [
         '@babel/preset-env',
         {
           bugfixes: true,
           useBuiltIns: 'usage',
+          shippedProposals: true,
           corejs: '3.8',
-          shippedProposals: true
         },
       ],
-      '@babel/preset-react',
       '@babel/preset-typescript',
     ],
     plugins: [
-      ...prodPlugins,
       '@babel/plugin-transform-runtime',
-      '@babel/plugin-proposal-class-properties',
-      [
-        '@babel/plugin-proposal-decorators',
-        {
-          legacy: true,
-        },
-      ],
       'babel-plugin-lodash',
-      'macros',
+      '@babel/plugin-proposal-optional-chaining',
+      '@babel/plugin-proposal-class-properties',
       [
         'import',
         {
