@@ -1,5 +1,5 @@
 import { bootstrap } from '@/bootstrap';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 const map = {
@@ -13,6 +13,7 @@ const Form = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm({
     mode: 'onChange',
@@ -33,6 +34,13 @@ const Form = () => {
   };
 
   const country = watch('country');
+
+  // 如果选中了usa，将默认城市设置为huston
+  useEffect(() => {
+    if (country === 'usa') {
+      setValue('city', 'huston');
+    }
+  }, [country]);
 
   return (
     <div style={{ padding: 40 }}>
