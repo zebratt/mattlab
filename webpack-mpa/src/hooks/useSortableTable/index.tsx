@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react';
 import {
   SortableContainer,
   SortableElement,
   SortableHandle,
-} from 'react-sortable-hoc'
-import arrayMove from 'array-move'
-import { useState } from 'react'
-import { MenuOutlined } from '@ant-design/icons'
-import { Table } from 'antd'
-import { TableProps } from 'antd/lib/table'
+} from 'react-sortable-hoc';
+import arrayMove from 'array-move';
+import { useState } from 'react';
+import { MenuOutlined } from '@ant-design/icons';
+import { Table } from 'antd';
+import { TableProps } from 'antd/lib/table';
 
-import './style.less'
+import './style.less';
 
-const SortableItem = SortableElement((props: any) => <tr {...props} />)
 const SortableContainerItem = SortableContainer((props: any) => (
   <tbody {...props} />
-))
-
+));
 interface UseSortableTableProps<T> extends TableProps<T> {
-  onSortChange: (data: T[]) => void
+  onSortChange: (data: T[]) => void;
+  CustomRow?: (params: any) => JSX.Element;
+  CustomCell?: (params: any) => JSX.Element;
 }
 
 function useSortableTable<R extends Record<string, unknown>>({
@@ -26,36 +26,46 @@ function useSortableTable<R extends Record<string, unknown>>({
   columns = [],
   rowKey,
   onSortChange,
+  CustomRow,
+  CustomCell,
   ...rest
 }: UseSortableTableProps<R>) {
-  const [dataSource, setDataSource] = useState(data)
+  const [dataSource, setDataSource] = useState(data);
 
   useEffect(() => {
-    setDataSource(data)
-  }, [data])
+    setDataSource(data);
+  }, [data]);
+
+  const SortableItem = useMemo(() => {
+    if (CustomRow) {
+      return SortableElement((props: any) => <CustomRow {...props} />);
+    } else {
+      return SortableElement((props: any) => <tr {...props} />);
+    }
+  }, [CustomRow]);
 
   const DragHandle = SortableHandle(() => (
     <MenuOutlined style={{ cursor: 'pointer', color: '#999' }} />
-  ))
+  ));
 
   const onSortEnd = ({
     oldIndex,
     newIndex,
   }: {
-    oldIndex: number
-    newIndex: number
+    oldIndex: number;
+    newIndex: number;
   }) => {
     if (oldIndex !== newIndex) {
       const newData = arrayMove<R>(
         ([] as R[]).concat(dataSource),
         oldIndex,
         newIndex
-      ).filter(el => !!el)
+      ).filter((el) => !!el);
 
-      setDataSource(newData)
-      onSortChange(newData)
+      setDataSource(newData);
+      onSortChange(newData);
     }
-  }
+  };
 
   const DraggableContainer = (props: any) => (
     <SortableContainerItem
@@ -65,15 +75,15 @@ function useSortableTable<R extends Record<string, unknown>>({
       onSortEnd={onSortEnd}
       {...props}
     />
-  )
+  );
 
   const DraggableBodyRow = ({ className, style, ...restProps }: any) => {
     // function findIndex base on Table rowKey props and should always be a right array index
     const index = dataSource.findIndex(
       (x: R) => x[rowKey as string] === restProps['data-row-key']
-    )
-    return <SortableItem index={index} {...restProps} />
-  }
+    );
+    return <SortableItem index={index} {...restProps} />;
+  };
 
   return (
     <Table
@@ -93,11 +103,12 @@ function useSortableTable<R extends Record<string, unknown>>({
         body: {
           wrapper: DraggableContainer,
           row: DraggableBodyRow,
+          cell: CustomCell,
         },
       }}
       {...rest}
     />
-  )
+  );
 }
 
-export default useSortableTable
+export default useSortableTable;
