@@ -1,6 +1,7 @@
 import Koa from "koa";
-import bodyParser from "koa-bodyparser";
 import cors from "@koa/cors";
+import koaBody from "koa-body";
+import path from "path";
 import router from "./router";
 import { initControllers } from "./controller";
 
@@ -10,7 +11,15 @@ export async function createApp() {
   await initControllers();
 
   return app
-    .use(bodyParser())
+    .use(
+      koaBody({
+        multipart: true,
+        formidable: {
+          uploadDir: path.join(__dirname, "upload"), // 设置文件上传目录
+          keepExtensions: true, // 保持文件的后缀
+        },
+      })
+    )
     .use(cors())
     .use(router.routes())
     .use(router.allowedMethods())

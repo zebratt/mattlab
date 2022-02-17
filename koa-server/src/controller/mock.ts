@@ -9,4 +9,9 @@ export default class {
 
     ctx.body = "abc";
   }
+
+  @Route(Method.POST, "/mock/upload")
+  async upload(ctx: Context) {
+    ctx.body = "success - " + Date.now();
+  }
 }
