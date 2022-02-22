@@ -23,10 +23,10 @@ module.exports = (api) => {
       [
         'import',
         {
-          libraryName: 'antd',
+          libraryName: 'infosysD',
+          libraryDirectory: 'lib',
           style: true,
         },
-        'antd',
       ],
       [
         'import',
