@@ -2,7 +2,7 @@
 import { bootstrap } from '@/bootstrap';
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import './style.css';
-import { Table, Input, Button, Popconfirm, Form, Select } from 'antd';
+import { Table, Input, Button, Popconfirm, Form, Select } from 'infosysD';
 import useSortableTable from '@/hooks/useSortableTable';
 const EditableContext = React.createContext(null);
 
@@ -39,6 +39,7 @@ const EditableCell = (props) => {
 
   const toggleEdit = () => {
     setEditing(!editing);
+    console.log('dataIndex:', dataIndex, '-', record[dataIndex]);
     form.setFieldsValue({
       [dataIndex]: record[dataIndex],
     });

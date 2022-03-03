@@ -7,8 +7,8 @@ import {
 import arrayMove from 'array-move';
 import { useState } from 'react';
 import { MenuOutlined } from '@ant-design/icons';
-import { Table } from 'antd';
-import { TableProps } from 'antd/lib/table';
+import { Table } from 'infosysD';
+import { TableProps } from 'infosysD/lib/table';
 
 import './style.less';
 
