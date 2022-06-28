@@ -20,7 +20,7 @@ export default function IndexPage() {
       <button
         onClick={() => {
           store.dispatch.auth.updateAuth({
-            nextAuth: 'false',
+            nextAuth: false,
           });
         }}
       >
