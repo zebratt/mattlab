@@ -6,30 +6,15 @@ Rematch plugin for umi
 
 ## Install
 
-```bash
-# or yarn
-$ npm install
-```
-
-```bash
-$ npm run build --watch
-$ npm run start
-```
+yarn add umi-plugin-rematch -D
 
 ## Usage
 
-Configure in `.umirc.js`,
+安装后框架会自动开启 umi-plugin 开头的插件
 
-```js
-export default {
-  plugins: [['umi-plugin-rematch']],
-};
 ```
-
-## Options
-
-TODO
 
 ## LICENSE
 
 MIT
+```
