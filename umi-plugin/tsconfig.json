@@ -1,23 +1,39 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "preserve",
-    "allowJs": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "jsx": "react-jsx",
     "esModuleInterop": true,
-    "experimentalDecorators": true,
+    "sourceMap": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "declaration": true
+    "baseUrl": "./",
+    "paths": {
+      "@@/*": [
+        "example/.umi/*"
+      ],
+      "@/*": [
+        "example/config/*"
+      ]
+    },
+    "allowSyntheticDefaultImports": true,
+    // "useUnknownInCatchVariables": false,
+    "suppressImplicitAnyIndexErrors": true
   },
+  "include": [
+    "example/**/*"
+  ],
   "exclude": [
     "node_modules",
-    "dist",
-    "**/*.spec.ts",
     "lib",
-    "fixtures",
-    "examples"
+    "es",
+    "dist",
+    "typings",
+    "**/__test__",
+    "test",
+    "docs",
+    "tests"
   ]
 }

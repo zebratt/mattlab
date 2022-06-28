@@ -6,4 +6,5 @@ export default defineConfig({
   },
   routes: [{ path: '/', component: '@/pages/index' }],
   fastRefresh: {},
+  plugins: [require.resolve('../umi-plugin/lib')]
 });
