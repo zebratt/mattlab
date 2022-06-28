@@ -10,21 +10,10 @@
     "sourceMap": true,
     "strict": true,
     "baseUrl": "./",
-    "paths": {
-      "@@/*": [
-        "example/.umi/*"
-      ],
-      "@/*": [
-        "example/config/*"
-      ]
-    },
     "allowSyntheticDefaultImports": true,
     // "useUnknownInCatchVariables": false,
     "suppressImplicitAnyIndexErrors": true
   },
-  "include": [
-    "example/**/*"
-  ],
   "exclude": [
     "node_modules",
     "lib",
