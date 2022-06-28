@@ -17,9 +17,10 @@ export default createModel<RootModel>()({
     },
   },
   effects: (dispatch) => ({
-    async stopLoading() {
+    async stopLoading(payload: { next: boolean }) {
+      console.log(payload.next);
+
       dispatch.app.updateLoading(false);
-      dispatch.auth.startAuth();
     },
   }),
 });

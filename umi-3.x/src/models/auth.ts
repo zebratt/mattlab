@@ -9,8 +9,8 @@ export default createModel()({
     auth: false,
   } as State,
   reducers: {
-    startAuth(state) {
-      state.auth = true;
+    updateAuth(state, payload: { nextAuth: boolean }) {
+      state.auth = payload.nextAuth;
 
       return state;
     },

@@ -4,6 +4,7 @@ import $ from './index.less';
 
 export default function IndexPage() {
   const { loading } = useSelector((state: RootState) => state.app);
+  const { auth } = useSelector((state: RootState) => state.auth);
 
   return (
     <div className={$.page}>
@@ -15,6 +16,16 @@ export default function IndexPage() {
         stop loading
       </button>
       {loading ? <div>I am loading!</div> : <div>stopped</div>}
+      <div>auth: {auth}</div>
+      <button
+        onClick={() => {
+          store.dispatch.auth.updateAuth({
+            nextAuth: 'false',
+          });
+        }}
+      >
+        update auth
+      </button>
     </div>
   );
 }
