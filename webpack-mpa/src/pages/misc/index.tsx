@@ -1,30 +1,44 @@
 import { bootstrap } from '@/bootstrap';
-import React, { useEffect, useState } from 'react';
-import Foo from './foo';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-function MiscPage() {
-  const [a, setA] = useState(null);
+function useEvent(callback) {
+  const callbackRef = useRef<any>(null);
 
-  useEffect(() => {
-    if (a && a.name) {
-      console.log(a.name);
+  callbackRef.current = callback;
+
+  const event = useCallback((...args) => {
+    if (callbackRef.current) {
+      callbackRef.current.apply(null, args);
     }
-  }, [a || null]);
+  }, []);
 
-  return (
-    <div>
-      <h1>misc page</h1>
-      <button
-        onClick={() => {
-          setA({
-            name: Date.now(),
-          });
-        }}
-      >
-        click me
-      </button>
-    </div>
-  );
+  return event;
 }
 
-bootstrap(<MiscPage />);
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  const onLeave = useEvent(() => {
+    console.log('onleave:', count);
+  });
+
+  const onEnter = useEvent(() => {
+    console.log('onenter:', count);
+  });
+
+  const onClick = () => {
+    setCount(count + 1);
+  };
+
+  useEffect(() => {
+    onEnter();
+
+    return () => {
+      onLeave();
+    };
+  });
+
+  return <div onClick={onClick}>click to add counter counter: {count}</div>;
+}
+
+bootstrap(<App />);
