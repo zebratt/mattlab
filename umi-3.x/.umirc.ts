@@ -6,5 +6,4 @@ export default defineConfig({
   },
   routes: [{ path: '/', component: '@/pages/index' }],
   fastRefresh: {},
-  plugins: [require.resolve('/home/matt/lab/umi-plugin-rematch/lib')],
 });
