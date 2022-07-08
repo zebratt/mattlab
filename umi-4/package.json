@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "@umijs/max": "^4.0.2",
+    "info-request": "0.0.5-SNAPSHOT",
+    "infosysD": "^0.8.2",
     "umi": "^4.0.2"
   },
   "devDependencies": {

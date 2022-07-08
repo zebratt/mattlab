@@ -3,28 +3,28 @@ import { RootState, store } from 'umi';
 import $ from './index.less';
 
 export default function IndexPage() {
-  const { loading } = useSelector((state: RootState) => state.app);
-  const { auth } = useSelector((state: RootState) => state.auth);
+  const { loading, count } = useSelector((state: RootState) => state.app);
+  const { auth, num } = useSelector((state: RootState) => state.auth);
 
   return (
     <div className={$.page}>
       <button
         onClick={() => {
-          store.dispatch.app.stopLoading();
+          store.dispatch.app.stopLoading({
+            next: false,
+          });
         }}
       >
         stop loading
       </button>
       {loading ? <div>I am loading!</div> : <div>stopped</div>}
-      <div>auth: {auth}</div>
+      <div>auth num: {num}</div>
       <button
         onClick={() => {
-          store.dispatch.auth.updateAuth({
-            nextAuth: false,
-          });
+          store.dispatch.auth.updateNum(999);
         }}
       >
-        update auth
+        update auth num
       </button>
     </div>
   );
