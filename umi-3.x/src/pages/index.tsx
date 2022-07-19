@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { RootState, store } from 'umi';
+import { Link, RootState, store } from 'umi';
 import $ from './index.less';
 
 export default function IndexPage() {
@@ -8,16 +8,6 @@ export default function IndexPage() {
 
   return (
     <div className={$.page}>
-      <button
-        onClick={() => {
-          store.dispatch.app.stopLoading({
-            next: false,
-          });
-        }}
-      >
-        stop loading
-      </button>
-      {loading ? <div>I am loading!</div> : <div>stopped</div>}
       <div>auth num: {num}</div>
       <button
         onClick={() => {
@@ -26,6 +16,10 @@ export default function IndexPage() {
       >
         update auth num
       </button>
+      <br />
+      <br />
+      <br />
+      <Link to={'/slave'}>slave app</Link>
     </div>
   );
 }
