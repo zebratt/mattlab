@@ -1,11 +1,20 @@
 export default {
   npmClient: 'yarn',
-  svgr: {
-    svgProps: { viewBox: '0 0 1024 1024' },
-  },
   plugins: [
     '@umijs/plugins/dist/qiankun'
   ],
+  svgo: {
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+          },
+        },
+      },
+    ],
+  },
   qiankun: {
     master: {
       apps: [
