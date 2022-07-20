@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "@umijs/plugins": "^4.0.7",
-    "umi": "^4.0.2"
+    "umi": "^4.0.2",
+    "webpack": "^5.73.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

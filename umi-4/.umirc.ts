@@ -1,3 +1,5 @@
+const { ModuleFederationPlugin } = require("webpack").container;
+
 export default {
   npmClient: 'yarn',
   plugins: [
@@ -6,12 +8,8 @@ export default {
   svgo: {
     plugins: [
       {
-        name: 'preset-default',
-        params: {
-          overrides: {
-            removeViewBox: false,
-          },
-        },
+        name: 'removeViewBox',
+        active: false,
       },
     ],
   },
@@ -35,4 +33,15 @@ export default {
       microApp: 'slave-app',
     },
   ],
+  mfsu: false,
+  chainWebpack(memo) {
+    memo
+      .plugin('mf')
+      .use(ModuleFederationPlugin, [{
+        name: "mf2",
+        remotes: {
+          mf1: "mf1@//172.17.245.58:3003/remoteEntry.js"
+        },
+      }])
+  },
 };
